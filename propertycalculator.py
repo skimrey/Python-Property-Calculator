@@ -49,20 +49,24 @@ def propertyCalc():
         return ROI
         
     def startCalc():
-        
-        cashflow = determineFlow()
-        totalexpenses = getExpenses()
-        income = getIncome()
-        ROI = getROI()
-        result= tk.Tk()
-        tk.Label(result, 
-             text=f"Your monthly income is ${income}",).grid(row=0, column=3)
-        tk.Label(result, 
-             text=f"Your monthly expenses are ${totalexpenses}").grid(row=1, column=3)
-        tk.Label(result, 
-             text=f"This means your monthly cash flow is ${cashflow}").grid(row=2, column=3)
-        tk.Label(result, 
-             text=f"Your cash on cash ROI is therefore {ROI}%").grid(row=3, column=3)
+        try:
+            cashflow = determineFlow()
+            totalexpenses = getExpenses()
+            income = getIncome()
+            ROI = getROI()
+            result= tk.Tk()
+            tk.Label(result, 
+                 text=f"Your monthly income is ${income}").grid(row=0)
+            tk.Label(result, 
+                 text=f"Your monthly expenses are ${totalexpenses}").grid(row=1)
+            tk.Label(result, 
+                 text=f"This means your monthly cash flow is ${cashflow}").grid(row=2)
+            tk.Label(result, 
+                 text=f"Your cash on cash ROI is therefore {ROI}%").grid(row=3)
+        except:
+            error = tk.Tk()
+            tk.Label(error, 
+                 text=f"Please enter only numbers with no blank spaces").grid(row=0)
             
         
     master = tk.Tk()
